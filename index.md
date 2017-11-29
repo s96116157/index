@@ -73,10 +73,10 @@ function write(params, SheetName, lastRow)
   var arr_number;
   var arr_price;
   
-  if(d_items.indexOf(',')!=-1){        //indexOf 傳回指定字元','是否出現，如果沒出現則回傳-1
-    arr_items = d_items.split(',');    // 把原始資料用 , 分割成陣列
-    arr_number = d_number.split(',');  // 把原始資料用 , 分割成陣列
-    arr_price = d_price.split(',');    // 把原始資料用 , 分割成陣列
+  if(d_items.indexOf(',')!=-1){        // indexOf 傳回指定字元 ',' 沒值則回傳-1
+    arr_items = d_items.split(',');    // 把原始資料用 ',' 分割成陣列
+    arr_number = d_number.split(',');  // 把原始資料用 ',' 分割成陣列
+    arr_price = d_price.split(',');    // 把原始資料用 ',' 分割成陣列
     
     for(var i=0; i<arr_items.length; i++){
       data_items.push(arr_items[i]); 
@@ -85,7 +85,7 @@ function write(params, SheetName, lastRow)
     }
     
   }else{
-    arr_items = d_items.split(',');    // 把原始資料用 , 分割成陣列
+    arr_items = d_items.split(',');    // 把原始資料用 ',' 分割成陣列
     data_items = [d_items];
     data_number = [d_number];
     data_price = [d_price];
