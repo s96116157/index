@@ -24,6 +24,103 @@ Syntax highlighted code block
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
+
+function doGet(e) {  
+  var params = e.parameter;
+  var url = "https://docs.google.com/spreadsheets/d/1X5Mtln-MYBhyBRn0RveNOXCkb32A4VTzht1AIGkNvdU/edit#gid=0";
+  var name = "From_002";
+  var type = params.type;
+  
+  var SpreadSheet = SpreadsheetApp.openByUrl(url);  
+  var SheetName = SpreadSheet.getSheetByName(name);  
+  
+  var lastColumn = SheetName.getLastColumn();  //最後一格 A B C D...
+  var lastRow = SheetName.getLastRow();  //最後一格 1 2 3 4...
+  var back_value = 1;
+  //var startRow = params.startRow;
+  //var startColumn = params.startColumn;
+  //var endRow = (!params.endRow)?1:params.endRow;
+  //var endColumn = (!params.endColumn)?1:params.endColumn;   
+  //var data = SheetName.getSheetValues(startRow, startColumn, endRow, endColumn);    
+  
+  if(type == "write"){
+    back_value = write(params, SheetName, lastRow);
+  }  
+  else if(type == "read")  {  
+    
+  }
+  else  {
+    
+  };  
+  
+  //var lastColumn = SheetName.getLastColumn();
+  //var lastRow = SheetName.getLastRow();
+  //SpreadSheet.appendRow([SpreadSheet.getName()]); // 插入一列新的資料 
+  
+  return ContentService.createTextOutput(back_value);
+}
+
+function write(params, SheetName, lastRow)
+{ 
+  //var int = params.items.length;  
+  var id = Date.now();
+  var key = params.key;
+  var sysid = lastRow;
+  var d_items = params.items;
+  var d_number = params.number;
+  var d_price = params.price;
+  var data_items = [];
+  var data_number = [];
+  var data_price = [];
+  var arr_items;
+  var arr_number;
+  var arr_price;
+  
+  if(d_items.indexOf(',')!=-1){ //indexOf 傳回指定字元','是否出現，如果沒出現則回傳-1
+    arr_items = d_items.split(','); // 把原始資料用 , 分割成陣列
+    arr_number = d_number.split(','); // 把原始資料用 , 分割成陣列
+    arr_price = d_price.split(','); // 把原始資料用 , 分割成陣列
+    //console.log('d', d)
+    //console.log('arr', arr)
+    for(var i=0; i<arr_items.length; i++){
+      data_items.push(arr_items[i]); 
+      data_number.push(arr_number[i]); 
+      data_price.push(arr_price[i]); 
+    }
+  }else{
+    arr_items = d_items.split(','); // 把原始資料用 , 分割成陣列
+    data_items = [d_items];
+    data_number = [d_number];
+    data_price = [d_price];
+  }
+  
+  for (i = 0; i < arr_items.length; i++) {  
+    sysid ++;
+    var val_time = params.time;    
+    var val_items = data_items[i];
+    var val_number = data_number[i];
+    var val_price = data_price[i];
+    //var val_items = params.items[i];
+    //var val_number = params.number[i];
+    //var val_price = params.price[i];
+    SheetName.appendRow([sysid,1,GetTime(),val_items,val_number,val_price,id]);
+  }
+  return id;
+};
+
+function GetTime()
+{
+  var Today = new Date();
+  var yyyy = Today.getFullYear();
+  var MM = ('0' + (Today.getMonth() + 1)).substr(-2);
+  var dd = ('0' + Today.getDate()).substr(-2);
+  var HH = ('0' + Today.getHours()).substr(-2);
+  var mm = ('0' + Today.getMinutes()).substr(-2);
+  var ss = ('0' + Today.getSeconds()).substr(-2);
+  //console.log("" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss);
+  return "" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss + "";
+}
+
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
