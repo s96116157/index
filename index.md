@@ -4,33 +4,9 @@ You can use the [editor on GitHub](https://github.com/s96116157/index/edit/maste
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
-### Markdown
+## Google App Script
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```
-TEST
-```
-
-_TEST_
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-** Bold ** and _ Italic _ and ` Code ` text
-
-[Link](url) and ![Image](src)
-```
 
 ```javascript
 function doGet(e) {  
@@ -73,7 +49,7 @@ function write(params, SheetName, lastRow)
   var arr_number;
   var arr_price;
   
-  if(d_items.indexOf(',')!=-1){        // indexOf 傳回指定字元 ',' 沒值則回傳-1
+  if(d_items.indexOf(',')!=-1){        // indexOf 傳回指定字元 ',' 沒值則回傳-1
     arr_items = d_items.split(',');    // 把原始資料用 ',' 分割成陣列
     arr_number = d_number.split(',');  // 把原始資料用 ',' 分割成陣列
     arr_price = d_price.split(',');    // 把原始資料用 ',' 分割成陣列
