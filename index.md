@@ -27,21 +27,16 @@ Syntax highlighted code block
 
 function doGet(e) {  
   var params = e.parameter;
-  var url = "https://docs.google.com/spreadsheets/d/1X5Mtln-MYBhyBRn0RveNOXCkb32A4VTzht1AIGkNvdU/edit#gid=0";
+  var url = "`Your URL`";
   var name = "From_002";
   var type = params.type;
   
   var SpreadSheet = SpreadsheetApp.openByUrl(url);  
   var SheetName = SpreadSheet.getSheetByName(name);  
   
-  var lastColumn = SheetName.getLastColumn();  //最後一格 A B C D...
-  var lastRow = SheetName.getLastRow();  //最後一格 1 2 3 4...
+  var lastColumn = SheetName.getLastColumn();  // A B C D...
+  var lastRow = SheetName.getLastRow();  // 1 2 3 4...
   var back_value = 1;
-  //var startRow = params.startRow;
-  //var startColumn = params.startColumn;
-  //var endRow = (!params.endRow)?1:params.endRow;
-  //var endColumn = (!params.endColumn)?1:params.endColumn;   
-  //var data = SheetName.getSheetValues(startRow, startColumn, endRow, endColumn);    
   
   if(type == "write"){
     back_value = write(params, SheetName, lastRow);
@@ -100,9 +95,6 @@ function write(params, SheetName, lastRow)
     var val_items = data_items[i];
     var val_number = data_number[i];
     var val_price = data_price[i];
-    //var val_items = params.items[i];
-    //var val_number = params.number[i];
-    //var val_price = params.price[i];
     SheetName.appendRow([sysid,1,GetTime(),val_items,val_number,val_price,id]);
   }
   return id;
@@ -117,7 +109,6 @@ function GetTime()
   var HH = ('0' + Today.getHours()).substr(-2);
   var mm = ('0' + Today.getMinutes()).substr(-2);
   var ss = ('0' + Today.getSeconds()).substr(-2);
-  //console.log("" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss);
   return "" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss + "";
 }
 
