@@ -12,7 +12,7 @@ Markdown is a lightweight and easy-to-use syntax for styling your writing. It in
 TEST
 ```
 
-TEST
+_TEST_
 
 ```markdown
 Syntax highlighted code block
@@ -27,7 +27,7 @@ Syntax highlighted code block
 1. Numbered
 2. List
 
-**Bold** and _Italic_ and `Code` text
+** Bold ** and _ Italic _ and ` Code ` text
 
 [Link](url) and ![Image](src)
 
