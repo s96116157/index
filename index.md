@@ -35,8 +35,8 @@ Syntax highlighted code block
 ```javascript
 function doGet(e) {  
   var params = e.parameter;
-  var url = "`Your URL`";
-  var name = "From_002";
+  var url = 'Your URL';
+  var name = 'From_002';
   var type = params.type;
   
   var SpreadSheet = SpreadsheetApp.openByUrl(url);  
@@ -46,26 +46,20 @@ function doGet(e) {
   var lastRow = SheetName.getLastRow();  // 1 2 3 4...
   var back_value = 1;
   
-  if(type == "write"){
+  if(type == 'write'){
     back_value = write(params, SheetName, lastRow);
   }  
-  else if(type == "read")  {  
+  else if(type == 'read')  {  
     
   }
   else  {
     
-  };  
-  
-  //var lastColumn = SheetName.getLastColumn();
-  //var lastRow = SheetName.getLastRow();
-  //SpreadSheet.appendRow([SpreadSheet.getName()]); // 插入一列新的資料 
-  
+  };    
   return ContentService.createTextOutput(back_value);
 }
 
 function write(params, SheetName, lastRow)
 { 
-  //var int = params.items.length;  
   var id = Date.now();
   var key = params.key;
   var sysid = lastRow;
@@ -79,19 +73,19 @@ function write(params, SheetName, lastRow)
   var arr_number;
   var arr_price;
   
-  if(d_items.indexOf(',')!=-1){ //indexOf 傳回指定字元','是否出現，如果沒出現則回傳-1
-    arr_items = d_items.split(','); // 把原始資料用 , 分割成陣列
-    arr_number = d_number.split(','); // 把原始資料用 , 分割成陣列
-    arr_price = d_price.split(','); // 把原始資料用 , 分割成陣列
-    //console.log('d', d)
-    //console.log('arr', arr)
+  if(d_items.indexOf(',')!=-1){        //indexOf 傳回指定字元','是否出現，如果沒出現則回傳-1
+    arr_items = d_items.split(',');    // 把原始資料用 , 分割成陣列
+    arr_number = d_number.split(',');  // 把原始資料用 , 分割成陣列
+    arr_price = d_price.split(',');    // 把原始資料用 , 分割成陣列
+    
     for(var i=0; i<arr_items.length; i++){
       data_items.push(arr_items[i]); 
       data_number.push(arr_number[i]); 
       data_price.push(arr_price[i]); 
     }
+    
   }else{
-    arr_items = d_items.split(','); // 把原始資料用 , 分割成陣列
+    arr_items = d_items.split(',');    // 把原始資料用 , 分割成陣列
     data_items = [d_items];
     data_number = [d_number];
     data_price = [d_price];
@@ -105,6 +99,7 @@ function write(params, SheetName, lastRow)
     var val_price = data_price[i];
     SheetName.appendRow([sysid,1,GetTime(),val_items,val_number,val_price,id]);
   }
+  
   return id;
 };
 
@@ -117,7 +112,7 @@ function GetTime()
   var HH = ('0' + Today.getHours()).substr(-2);
   var mm = ('0' + Today.getMinutes()).substr(-2);
   var ss = ('0' + Today.getSeconds()).substr(-2);
-  return "" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss + "";
+  return '' + yyyy + '' + MM + '' + dd + '' + HH + '' + mm + '' + ss + '';
 }
 ```
 
