@@ -30,8 +30,9 @@ Syntax highlighted code block
 ** Bold ** and _ Italic _ and ` Code ` text
 
 [Link](url) and ![Image](src)
+```
 
-<code>
+```javascript
 function doGet(e) {  
   var params = e.parameter;
   var url = "`Your URL`";
@@ -118,7 +119,6 @@ function GetTime()
   var ss = ('0' + Today.getSeconds()).substr(-2);
   return "" + yyyy + "" + MM + "" + dd + "" + HH + '' + mm + "" + ss + "";
 }
-</code>
 ```
 
 For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
